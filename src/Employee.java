@@ -5,13 +5,13 @@ public class Employee {
     private int department;
     private double salary;
 //2. Добавила статическую переменную-счетчик, которая будет отвечать за id:
-    private static int Count = 1;
+    private static int сount = 1;
 //3. Добавьте в класс Employee поле id:
     private int id;
 
     // Конструктор
     public Employee(String fullName, int department, float salary) {
-        this.id = Count++;
+        this.id = сount++;
         this.fullName = fullName;
         this.department = department;
         this.salary = salary;
@@ -31,7 +31,7 @@ public class Employee {
     }
 
     public static int getCount() {
-        return Count;
+        return сount;
     }
 
     public int getId() {

@@ -57,7 +57,6 @@ public class EmployeeBook {
 
 // 8.3 Вывести значения налогов.
     public void taxPrint(String taxType) {
-        int type;
         double tax = 0;
         double percentProportional = 0.13;
         double percentProgressiveV1 = 0.13;
@@ -68,17 +67,9 @@ public class EmployeeBook {
             System.out.println("Список пустой.");
             return;
         }
-        if (taxType.equals("PROPORTIONAL")) {
-            type = 0;
-        } else if (taxType.equals("PROGRESSIVE")) {
-            type = 1;
-        } else {
-            System.out.println("Неизвестный метод расчета налогов.");
-            return;
-        }
 
-        switch (type) {
-            case 0:
+        switch (taxType) {
+            case "PROPORTIONAL":
                 System.out.println("Налог по схеме PROPORTIONAL:");
                 for (Employee employee : emp) {
                     if (employee != null) {
@@ -87,7 +78,7 @@ public class EmployeeBook {
                     }
                 }
                 break;
-            case 1:
+            case "PROGRESSIVE":
                 System.out.println("Налог по схеме PROGRESSIVE:");
                 for (Employee employee : emp) {
                     if (employee != null) {
@@ -100,6 +91,7 @@ public class EmployeeBook {
                 }
                 break;
             default:
+                System.out.println("Неизвестный метод расчета налогов.");
                 break;
         }
     }
@@ -193,7 +185,6 @@ public class EmployeeBook {
                 break;
             }
         }
-        System.out.println("Найденные совпадения: " + found);
         return found;
     }
 
@@ -205,31 +196,28 @@ public class EmployeeBook {
             if (employee == null) {
                 addEmployeeInBook(employeeAdd);
                 found = true;
-                System.out.println("Сотрудник " + employeeAdd.getFullName() + " добавлен, порядковый номер присвоен!");
                 break;
             }
         }
-        if (!found) System.out.println("Нет свободного места в списке.");
         return found;
     }
 
 // 10. Метод для получения сотрудника по id.
-    public boolean foundEqualsId(int id) {
+    public void foundEqualsId(int id) {
         boolean found = false;
 
         if (id <= 0) {
-            System.out.println("Некорректный id.");
-            return false;
+            System.out.println("Некорректный id. ");
+            return;
         }
 
         for (Employee employee : emp) {
             if (employee != null && employee.getId() == id) {
                 System.out.println("Найден сотрудник под заданным номером " + id + ":");
-                employee.printShortInfo();
+                System.out.println(employee);
                 found = true;
             }
         }
         if (!found) System.out.println("Сотрудник не найден по заданному id.");
-        return found;
     }
 }

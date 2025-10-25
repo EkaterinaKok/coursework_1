@@ -42,12 +42,16 @@ public class Main {
         book.printBook();
 
         System.out.println("\nЗаписываем сотрудника в список методом foundPlace:");
-        book.foundPlace(emp10);
+        if (book.foundPlace(emp10)) {
+            System.out.println("Сотрудник " + emp10.getFullName() + " добавлен, порядковый номер присвоен!");
+        } else System.out.println("Нет свободного места в списке.");
         System.out.println("\nНовый список с добавленным сотрудником:");
         book.printBook();
 
         System.out.println("\nЕще раз пробуем записать сотрудника в полный список методом foundPlace:");
-        book.foundPlace(emp11);
+        if (book.foundPlace(emp11)) {
+            System.out.println("Сотрудник " + emp11.getFullName() + " добавлен, порядковый номер присвоен!");
+        } else System.out.println("Нет свободного места в списке.");
 
         System.out.println("\nПробуем записать сотрудника в полный список методом addEmployeeInBook:");
         book.addEmployeeInBook(emp11); //11 сотрудник, не должен записаться
@@ -63,15 +67,15 @@ public class Main {
         book.taxPrint("Неизвестная система расчета налогов");
 
         System.out.println("\nИндексация ЗП у сотрудников заданного отдела на указанный процент:");
-        book.indexingSalary(4,17);
-        book.indexingSalary(4,0);  //отработка ошибки, если процент = 0
-        book.indexingSalary(4,-5); //отработка ошибки, если процент < 0
-        book.indexingSalary(6,15); //отработка ошибки на неверный отдел
+        book.indexingSalary(4, 17);
+        book.indexingSalary(4, 0);  //отработка ошибки, если процент = 0
+        book.indexingSalary(4, -5); //отработка ошибки, если процент < 0
+        book.indexingSalary(6, 15); //отработка ошибки на неверный отдел
 
         System.out.println("\nПервый сотрудник заданного отдела и ЗП больше указанной:");
-        book.salaryFilter(3,50000);
-        book.salaryFilter(7,50000);  //отработка ошибки на неверный отдел
-        book.salaryFilter(4,450000); //если нет совпадений
+        book.salaryFilter(3, 50000);
+        book.salaryFilter(7, 50000);  //отработка ошибки на неверный отдел
+        book.salaryFilter(4, 450000); //если нет совпадений
 
         System.out.println("\nПервые сотрудники (заданное количество) с ЗП меньше указанной:");
         book.salaryFilterTwo(150000, 2);
@@ -84,12 +88,13 @@ public class Main {
         Employee empForEquals = new Employee("Fadeev Nikita Ivanovich", 1, 220000);
 
         System.out.println("\nСовпадение по ЗП:");
-        book.equalsSalary(emp4); //есть
-        book.equalsSalary(empForEquals); //нет
+        System.out.println("Найденные совпадения: " + book.equalsSalary(emp4)); //есть
+        System.out.println("Найденные совпадения: " + book.equalsSalary(empForEquals)); //нет
 
-        System.out.println("\nПоиск сотрудника по заданному id");
-        book.foundEqualsId(3);
-        book.foundEqualsId(-3); //если некорректный id
+        System.out.println("\nПоиск сотрудника по заданному id:");
+        book.foundEqualsId(5); //есть
+        book.foundEqualsId(-3);//нет
+
 
 // 11. Создать объект класса EmployeeBook, наполните его через метод добавления нового сотрудника — вызовите метод 11 раз, выведите результат исполнения метода на экран.
         System.out.println("\nТест на переполнение массива из 10 ячеек:");
